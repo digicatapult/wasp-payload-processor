@@ -1,6 +1,6 @@
-const { before, after } = require('mocha')
-const { Kafka, logLevel: kafkaLogLevels } = require('kafkajs')
-const delay = require('delay')
+import { before, after } from 'mocha'
+import { Kafka, logLevel as kafkaLogLevels } from 'kafkajs'
+import delay from 'delay'
 
 const setupKafka = async (context) => {
   before(async function () {
@@ -63,4 +63,4 @@ const setupKafka = async (context) => {
   })
 }
 
-module.exports = { setupKafka }
+export { setupKafka }

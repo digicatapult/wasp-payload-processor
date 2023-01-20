@@ -1,11 +1,11 @@
-const { describe, it, before } = require('mocha')
-const { expect } = require('chai')
-const { setupServer } = require('./helpers/server')
-const { setupKafka } = require('./helpers/kafka')
+import { describe, it, before } from 'mocha'
+import { expect } from 'chai'
+import { setupServer } from './helpers/server.js'
+import { setupKafka } from './helpers/kafka.js'
 
-const { BYTE_PAYLOAD, EMPTY_PAYLOAD, INVALID_PAYLOAD } = require('./data/payloads')
+import { BYTE_PAYLOAD, EMPTY_PAYLOAD, INVALID_PAYLOAD } from './data/payloads.js'
 
-const lib = require('../../lib')
+import { buildService } from '../../lib/index.js'
 
 const defaultOptions = {
   sensorType: 'test-sensor',
@@ -49,7 +49,7 @@ const defaultOptions = {
 
 describe('Builder', function () {
   it('should export a buildService function', function () {
-    expect(lib.buildService).to.be.a('function')
+    expect(buildService).to.be.a('function')
   })
 })
 

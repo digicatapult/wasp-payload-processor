@@ -1,12 +1,12 @@
-const { before, after } = require('mocha')
-const request = require('supertest')
+import { before, after } from 'mocha'
+import request from 'supertest'
 
-const lib = require('../../../lib')
+import { buildService } from '../../../lib/index.js'
 
 const setupServer = (context) => {
   before(async function () {
     this.timeout(30000)
-    const { createHttpServer } = lib.buildService(context.options)
+    const { createHttpServer } = await buildService(context.options)
     Object.assign(context, await createHttpServer())
     context.request = request(context.app)
   })
@@ -17,4 +17,4 @@ const setupServer = (context) => {
   })
 }
 
-module.exports = { setupServer }
+export { setupServer }

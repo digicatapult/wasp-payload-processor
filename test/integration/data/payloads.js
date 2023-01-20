@@ -163,8 +163,4 @@ const INVALID_PAYLOAD = (messageTimestamp) => ({
   expectedEvents: [],
 })
 
-module.exports = {
-  BYTE_PAYLOAD,
-  EMPTY_PAYLOAD,
-  INVALID_PAYLOAD,
-}
+export { BYTE_PAYLOAD, EMPTY_PAYLOAD, INVALID_PAYLOAD }

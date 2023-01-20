@@ -9,7 +9,7 @@ If developing a new payload parsing service for WASP this could be as simple as:
 ```js
 // server.js
 
-const { buildService } = require('@digicatapult/wasp-payload-processor')
+import { buildService } from '@digicatapult/wasp-payload-processor'
 
 buildService({
     sensorType: 'new-sensor-type',

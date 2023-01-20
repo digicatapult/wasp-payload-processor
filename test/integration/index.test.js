@@ -1,55 +1,57 @@
-const { describe, it, before } = require('mocha')
-const { expect } = require('chai')
-const { setupServer } = require('./helpers/server')
-const { setupKafka } = require('./helpers/kafka')
+import { describe, it, before } from 'mocha'
+import { expect } from 'chai'
+import { setupServer } from './helpers/server.js'
+import { setupKafka } from './helpers/kafka.js'
 
-const { BYTE_PAYLOAD, EMPTY_PAYLOAD, INVALID_PAYLOAD } = require('./data/payloads')
+import { BYTE_PAYLOAD, EMPTY_PAYLOAD, INVALID_PAYLOAD } from './data/payloads.js'
 
-const lib = require('../../lib')
+import { buildService } from '../../lib/index.js'
 
 const defaultOptions = {
   sensorType: 'test-sensor',
-  payloadProcessor: () => ({ thingId, timestamp, payload }) => {
-    if (payload === 'invalid') {
-      throw new Error('Invalid payload')
-    }
+  payloadProcessor:
+    () =>
+    ({ thingId, timestamp, payload }) => {
+      if (payload === 'invalid') {
+        throw new Error('Invalid payload')
+      }
 
-    const asBuffer = Buffer.from(payload, 'base64')
-    return {
-      readings: [...asBuffer].map((b, i) => ({
-        dataset: {
-          thingId,
-          type: 'byte',
-          label: `index-${i}`,
-          unit: 'B',
-        },
-        timestamp,
-        value: b,
-      })),
-      events:
-        asBuffer.length !== 0
-          ? [
-              {
-                thingId,
-                timestamp,
-                type: 'TEST_EVENT_1',
-                details: { name: 'First' },
-              },
-              {
-                thingId,
-                timestamp,
-                type: 'TEST_EVENT_2',
-                details: { name: 'Second' },
-              },
-            ]
-          : undefined,
-    }
-  },
+      const asBuffer = Buffer.from(payload, 'base64')
+      return {
+        readings: [...asBuffer].map((b, i) => ({
+          dataset: {
+            thingId,
+            type: 'byte',
+            label: `index-${i}`,
+            unit: 'B',
+          },
+          timestamp,
+          value: b,
+        })),
+        events:
+          asBuffer.length !== 0
+            ? [
+                {
+                  thingId,
+                  timestamp,
+                  type: 'TEST_EVENT_1',
+                  details: { name: 'First' },
+                },
+                {
+                  thingId,
+                  timestamp,
+                  type: 'TEST_EVENT_2',
+                  details: { name: 'Second' },
+                },
+              ]
+            : undefined,
+      }
+    },
 }
 
 describe('Builder', function () {
   it('should export a buildService function', function () {
-    expect(lib.buildService).to.be.a('function')
+    expect(buildService).to.be.a('function')
   })
 })
 

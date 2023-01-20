@@ -9,42 +9,44 @@ import { buildService } from '../../lib/index.js'
 
 const defaultOptions = {
   sensorType: 'test-sensor',
-  payloadProcessor: () => ({ thingId, timestamp, payload }) => {
-    if (payload === 'invalid') {
-      throw new Error('Invalid payload')
-    }
+  payloadProcessor:
+    () =>
+    ({ thingId, timestamp, payload }) => {
+      if (payload === 'invalid') {
+        throw new Error('Invalid payload')
+      }
 
-    const asBuffer = Buffer.from(payload, 'base64')
-    return {
-      readings: [...asBuffer].map((b, i) => ({
-        dataset: {
-          thingId,
-          type: 'byte',
-          label: `index-${i}`,
-          unit: 'B',
-        },
-        timestamp,
-        value: b,
-      })),
-      events:
-        asBuffer.length !== 0
-          ? [
-              {
-                thingId,
-                timestamp,
-                type: 'TEST_EVENT_1',
-                details: { name: 'First' },
-              },
-              {
-                thingId,
-                timestamp,
-                type: 'TEST_EVENT_2',
-                details: { name: 'Second' },
-              },
-            ]
-          : undefined,
-    }
-  },
+      const asBuffer = Buffer.from(payload, 'base64')
+      return {
+        readings: [...asBuffer].map((b, i) => ({
+          dataset: {
+            thingId,
+            type: 'byte',
+            label: `index-${i}`,
+            unit: 'B',
+          },
+          timestamp,
+          value: b,
+        })),
+        events:
+          asBuffer.length !== 0
+            ? [
+                {
+                  thingId,
+                  timestamp,
+                  type: 'TEST_EVENT_1',
+                  details: { name: 'First' },
+                },
+                {
+                  thingId,
+                  timestamp,
+                  type: 'TEST_EVENT_2',
+                  details: { name: 'Second' },
+                },
+              ]
+            : undefined,
+      }
+    },
 }
 
 describe('Builder', function () {

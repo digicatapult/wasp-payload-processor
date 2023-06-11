@@ -1,6 +1,6 @@
 {
   "name": "@digicatapult/wasp-payload-processor",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "Service builder for WASP payload processors ",
   "main": "lib/index.js",
   "type": "module",
@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/digicatapult/wasp-payload-processor#readme",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.8",
-    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/eslint-parser": "^7.22.5",
+    "@babel/plugin-syntax-import-assertions": "^7.22.5",
     "c8": "^7.14.0",
     "chai": "^4.3.7",
     "delay": "^6.0.0",

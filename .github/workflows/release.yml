@@ -22,7 +22,7 @@ jobs:
     name: Run lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -42,7 +42,7 @@ jobs:
     name: Run dependency check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -97,7 +97,7 @@ jobs:
       npm_release_tag: ${{ steps.get_version.outputs.NPM_RELEASE_TAG }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: git fetch --depth=1 --tags origin
       - name: Check Build Version
         id: get_version
@@ -116,7 +116,7 @@ jobs:
     if: ${{ needs.check-version.outputs.is_new_version == 'true' }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
@@ -155,7 +155,7 @@ jobs:
     if: ${{ needs.check-version.outputs.is_new_version == 'true' }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'

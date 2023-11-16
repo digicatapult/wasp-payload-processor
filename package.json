@@ -1,6 +1,6 @@
 {
   "name": "@digicatapult/wasp-payload-processor",
-  "version": "1.1.68",
+  "version": "1.1.69",
   "description": "Service builder for WASP payload processors ",
   "main": "lib/index.js",
   "type": "module",
@@ -38,7 +38,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "mocha": "^10.2.0",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "supertest": "^6.3.3"
   },
   "dependencies": {

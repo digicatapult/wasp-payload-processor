@@ -1,6 +1,6 @@
 {
   "name": "@digicatapult/wasp-payload-processor",
-  "version": "1.1.103",
+  "version": "1.1.104",
   "description": "Service builder for WASP payload processors ",
   "main": "lib/index.js",
   "type": "module",
@@ -47,6 +47,6 @@
     "express": "^4.18.3",
     "kafkajs": "^2.2.4",
     "pino": "^8.19.0",
-    "pino-http": "^8.6.1"
+    "pino-http": "^9.0.0"
   }
 }

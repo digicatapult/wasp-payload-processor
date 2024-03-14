@@ -1,5 +1,9 @@
 # wasp-payload-processor
 
+## Deprecation Notice
+`WASP` was deprecated on March 14th 2024, there will be no further dependency or security updates to this platform.
+---
+
 Service builder for WASP payload processors. The library provides a simple way of implementing a payload processor for a new thing type in WASP. The intentions of this module is to simplify the development of support for new IoT devices in WASP.
 
 ## Developing a new WASP payload processor
